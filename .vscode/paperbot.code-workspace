@@ -4,5 +4,16 @@
 			"path": ".."
 		}
 	],
-	"settings": {}
+	"settings": {},
+	"extensions": {
+		"recommendations": [
+			"aaron-bond.better-comments",
+			"oderwat.indent-rainbow",
+			"ms-python.mypy-type-checker",
+			"ms-python.debugpy",
+			"ms-python.python",
+			"ms-python.vscode-pylance",
+			"charliermarsh.ruff"
+		]
+	}
 }
