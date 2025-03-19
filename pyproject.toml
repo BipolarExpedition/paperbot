@@ -1,0 +1,76 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "paperbot"
+dynamic = ["version"]
+description = 'Aggregate the news into one summary'
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = []
+authors = [{ name = "BipolarExpedition", email = "lastdoc39@gmail.com" }]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = ["requests", "ollama", "feedparser", "diskcache"]
+
+[project.optional-dependencies]
+dev = [
+  "pytest",      # Testing
+  "pytest-mock", # Mocking for tests
+  "ruff",        # Linting & formatting
+  "mypy",        # Type checking
+]
+
+[project.urls]
+Documentation = "https://github.com/BipolarExpedition/paperbot#readme"
+Issues = "https://github.com/BipolarExpedition/paperbot/issues"
+Source = "https://github.com/BipolarExpedition/paperbot"
+
+[tool.pytest.ini_options]
+pythonpath = [".", "src"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/paperbot"]
+
+[tool.mypy]
+mypy_path = "src"
+
+[project.scripts]
+# paperbot = "paperbot.cli:paperbot"
+paperbot = "paperbot:script_entry" # paperbot.__main__:main"
+
+[tool.hatch.version]
+path = "src/paperbot/__about__.py"
+
+[tool.hatch.envs.default]
+path = ".venv"
+
+[tool.hatch.envs.types]
+extra-dependencies = ["mypy>=1.0.0"]
+
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/paperbot tests}"
+
+[tool.coverage.run]
+source_pkgs = ["paperbot", "tests"]
+branch = true
+parallel = true
+omit = ["src/paperbot/__about__.py"]
+
+[tool.coverage.paths]
+paperbot = ["src/paperbot", "*/paperbot/src/paperbot"]
+tests = ["tests", "*/paperbot/tests"]
+
+[tool.coverage.report]
+exclude_lines = ["no cov", "if __name__ == .__main__.:", "if TYPE_CHECKING:"]

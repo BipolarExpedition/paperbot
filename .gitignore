@@ -1,0 +1,62 @@
+# Python project
+
+## Ignore virtual environment files
+venv/
+.venv/
+
+## Ignore build and distribution files
+build/
+dist/
+
+## Ignore egg and PyInstaller files
+*.egg-info/
+PyInstaller/
+
+## Ignore coverage data file
+coverage.xml
+.coverage
+
+## Ignore log files
+logs/
+
+## Ignore generated documentation files
+docs/_build/
+docs/api/*
+
+## Ignore Jupyter notebooks and outputs
+*.ipynb
+*.ipynb_checkpoints
+
+## Ignore mypy type checking cache
+mypy.cache/
+
+## Ignore Python test report files
+report.html
+junitxml.txt
+
+## Ignore Python profiling data
+profile.svg
+profile.txt
+
+## Ignore mypy warning and error messages
+*.w
+*.x
+
+## Ignore pytest test report file
+result.json
+
+## Ignore flake8 linting cache
+flake8.cache
+
+## Ignore Python type stub files
+**/*_stubs.py
+
+## Cache files
+__pycache__
+
+## Runtime generated files
+logs/
+news_cache/
+news_report.md
+.pytest_cache/
+.mypy_cache/
